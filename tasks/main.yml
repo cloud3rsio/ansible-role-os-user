@@ -1,6 +1,10 @@
 ---
 - name: Create salt
-  shell: mktemp -u | awk '{print substr($0, length($0)-8+1)}'
+  shell: |
+    set -o pipefail
+    mktemp -u | awk '{print substr($0, length($0)-8+1)}'
+  args:
+    executable: /bin/bash
   changed_when: False
   register: salt
 
