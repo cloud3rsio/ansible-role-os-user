@@ -9,7 +9,7 @@
   register: salt
 
 - name: Create hash for password
-  shell: python -c 'import crypt; print crypt.crypt("{{ os_user.password }}", "$6${{ salt.stdout }}")'
+  shell: python -c 'import crypt; print(crypt.crypt("{{ os_user.password }}", "$6${{ salt.stdout }}"))'
   changed_when: False
   register: hash_password
 
